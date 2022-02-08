@@ -37,6 +37,7 @@ export const TabsNavigation = () => {
         name='WalletScreen'
         component={WalletScreen}
         options={{
+          tabBarLabel: 'Wallet',
           tabBarIcon: ({ color }) => <Ionicons name='wallet-outline' size={24} color={color} />
         }}
       />
@@ -44,6 +45,7 @@ export const TabsNavigation = () => {
         name='CryptoScreen'
         component={CryptoScreen}
         options={{
+          tabBarLabel: 'Crypto',
           tabBarIcon: ({ color }) => <Ionicons name='stats-chart-outline' size={24} color={color} />
         }}
       />
@@ -51,6 +53,7 @@ export const TabsNavigation = () => {
         name='TransactionsScreen'
         component={TransactionsScreen}
         options={{
+          tabBarLabel: 'Transacciones',
           tabBarIcon: ({ color }) => <Ionicons name='reader-outline' size={24} color={color} />
         }}
       />
@@ -58,6 +61,7 @@ export const TabsNavigation = () => {
         name='ProfileScreen'
         component={ProfileScreen}
         options={{
+          tabBarLabel: 'Perfil',
           tabBarIcon: ({ color }) => <Ionicons name='person-outline' size={24} color={color} />
         }}
       />
