@@ -22,6 +22,14 @@ export const globalStyles = StyleSheet.create({
     fontWeight: 'bold'
   },
   text: {
-    color: colors.white
+    color: colors.white,
+    fontSize: 14,
+    fontWeight: 'bold'
+  },
+  card: {
+    backgroundColor: '#263238',
+    borderRadius: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 8
   }
 });

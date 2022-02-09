@@ -5,19 +5,18 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors } from '../theme';
 import { CircularButton } from '../components/circular-button';
-import { hex } from '@project-serum/anchor/dist/cjs/utils/bytes';
 import { BalanceCard } from '../components/balance-card';
 import { assets } from '../data/assets';
 
 
 export const WalletScreen = () => {
-  const insets = useSafeAreaInsets()
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={{ top: insets.top }}>
+    <View style={{ top: insets.top, bottom: insets.bottom, padding: 12 }}>
       <View
         style={{
-          alignItems: 'flex-end',
-          padding: 12
+          alignItems: 'flex-end'
         }}
       >
         <Ionicons  name='qr-code-outline' size={28} color={colors.white} />

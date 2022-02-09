@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { colors } from '../theme';
+import { colors, globalStyles } from '../theme';
 
 import { Asset } from '../interfaces/asset-interface';
 
@@ -17,11 +17,7 @@ export const BalanceCard = (props: Asset) => {
 
   return (
     <View
-      style={{
-        backgroundColor: '#263238',
-        borderRadius: 10,
-        padding: 12
-      }}
+      style={globalStyles.card}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View
@@ -45,7 +41,7 @@ export const BalanceCard = (props: Asset) => {
         <Text
           style={{
             color: colors.white,
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: 'bold',
             paddingLeft: 8,
             flexGrow: 1
@@ -57,14 +53,14 @@ export const BalanceCard = (props: Asset) => {
           style={{
             backgroundColor: color,
             width: 50,
-            height: 10,
+            height: 4,
             borderRadius: 10
           }}
         />
         <Text
           style={{
             color: colors.white,
-            fontSize: 18,
+            fontSize: 14,
             fontWeight: 'bold',
             paddingLeft: 8
           }}

@@ -6,7 +6,6 @@ import { WalletScreen } from '../screens/wallet-screen';
 import { CryptoScreen } from '../screens/crypto-screen';
 import { TransactionsScreen } from '../screens/transactions-screen';
 import { ProfileScreen } from '../screens/profile-screen';
-import { Text } from 'react-native';
 import { colors } from '../theme';
 
 export const TabsNavigation = () => {
