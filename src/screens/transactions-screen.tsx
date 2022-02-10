@@ -59,7 +59,7 @@ export const TransactionsScreen = () => {
         </View>
       )}
       ItemSeparatorComponent={() => (
-        <View style={{ height: 16 }} />
+        <View style={{ height: 12 }} />
       )}
       />
     </View>

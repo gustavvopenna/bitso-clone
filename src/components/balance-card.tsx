@@ -4,7 +4,11 @@ import { colors, globalStyles } from '../theme';
 
 import { Asset } from '../interfaces/asset-interface';
 
-export const BalanceCard = (props: Asset) => {
+interface Props extends Asset {
+  showBalance: boolean
+}
+
+export const BalanceCard = (props: Props) => {
   const {
     name,
     portafolio_percentage,
@@ -12,7 +16,8 @@ export const BalanceCard = (props: Asset) => {
     balance_mxn,
     ticker,
     growing_asset,
-    color = colors.primaryLight
+    color = colors.primaryLight,
+    showBalance = true
   } = props;
 
   return (
@@ -68,34 +73,38 @@ export const BalanceCard = (props: Asset) => {
           {portafolio_percentage}%
         </Text>
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'flex-end',
-          paddingTop: 20,
-          paddingBottom: growing_asset ? 20 : 0
-        }}
-      >
-        <Text
+      {
+        showBalance && (
+        <View
           style={{
-            color: colors.white,
-            fontSize: 22,
-            fontWeight: 'bold'
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+            paddingTop: 20,
+            paddingBottom: growing_asset ? 20 : 0
           }}
         >
-          {balance}
-        </Text>
-        <Text
-          style={{
-            color: colors.white,
-            fontSize: 16,
-            paddingLeft: 4,
-            paddingBottom: 2
-          }}
-        >
-          {ticker.toUpperCase()}
-        </Text>
-      </View>
+          <Text
+            style={{
+              color: colors.white,
+              fontSize: 22,
+              fontWeight: 'bold'
+            }}
+          >
+            {balance}
+          </Text>
+          <Text
+            style={{
+              color: colors.white,
+              fontSize: 16,
+              paddingLeft: 4,
+              paddingBottom: 2
+            }}
+          >
+            {ticker.toUpperCase()}
+          </Text>
+        </View>
+        )
+      }
       { growing_asset && <Text
         style={{
           color: colors.primaryLight,

@@ -1,5 +1,5 @@
-import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { FlatList, Pressable, Text, View } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -11,6 +11,14 @@ import { assets } from '../data/assets';
 
 export const WalletScreen = () => {
   const insets = useSafeAreaInsets();
+  const [showBalance, setShowBalance] = useState<boolean>(true)
+
+  const toogleBalance = useCallback(() => {
+      setShowBalance(showBalance => !showBalance)
+    },
+    [showBalance]
+  )
+  
 
   return (
     <View style={{ top: insets.top, bottom: insets.bottom, padding: 12 }}>
@@ -35,39 +43,63 @@ export const WalletScreen = () => {
         >
           Balance combinado
         </Text>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'flex-end'
-          }}
-        >
+        <Pressable onPress={toogleBalance}>
+          {
+            showBalance
+            ? (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'flex-end'
+                }}
+              >
+                <Text
+                  style={{
+                    color: colors.white,
+                    fontSize: 40
+                  }}
+                >
+                  67,433.98
+                </Text>
+                <Text
+                  style={{
+                    color: colors.white,
+                    paddingBottom: 8,
+                    paddingLeft: 2
+                  }}
+                >
+                  MXN
+                </Text>
+              </View>
+            ) : (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'flex-end'
+                }}
+              >
+                <Text
+                  style={{
+                    color: colors.white,
+                    fontSize: 40
+                  }}
+                >
+                  Balance oculto
+                </Text>
+              </View>
+            )
+          }
           <Text
             style={{
-              color: colors.white,
-              fontSize: 40
+              fontSize: 16,
+              color: colors.primaryLight,
+              fontWeight: 'bold',
+              alignSelf: 'center'
             }}
           >
-            67,433.98
+            {showBalance ? 'Toca para ocultar' : 'Toca para mostrar'}
           </Text>
-          <Text
-            style={{
-              color: colors.white,
-              paddingBottom: 8,
-              paddingLeft: 2
-            }}
-          >
-            MXN
-          </Text>
-        </View>
-        <Text
-          style={{
-            fontSize: 16,
-            color: colors.primaryLight,
-            fontWeight: 'bold',
-          }}
-        >
-          Toca para ocultar
-        </Text>
+        </Pressable>
       </View>
       {/* Circular action buttons */}
       <View
@@ -101,7 +133,7 @@ export const WalletScreen = () => {
         data={assets}
         keyExtractor={(asset) => asset.id}
         renderItem={({ item }) => (
-          <BalanceCard {...item} />
+          <BalanceCard showBalance={showBalance} {...item} />
         )}
         ItemSeparatorComponent={() => (
           <View style={{ height: 16 }} />

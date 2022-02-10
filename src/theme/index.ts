@@ -7,7 +7,8 @@ export const colors = {
   secondary: '#64dd17',
   secondaryLight: '#9cff57',
   secondatyDark: '#1faa00',
-  white: '#ffffff'
+  white: '#ffffff',
+  gray100: '#d4d4d4'
 }
 
 export const globalStyles = StyleSheet.create({
